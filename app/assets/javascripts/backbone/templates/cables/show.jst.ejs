@@ -5,17 +5,29 @@
 </div>
 
 <div class="body">
-<% _.each(paragraphs, function(para) { %>
-<div class="row">
-	<div class="source span6 columns">
+<div class="row info">
+	<div class="span6 columns">
+	<h4>Inglés</h4>
+	</div>
+	<div class="span6 columns">
+	<h4>Castellano</h4>
+	<p><strong>No implementado:</strong> la idea es que un traductor automático haga la primera traducción y luego se refine colaborativamente.
+	</p>
+	</div>
+	<div class="span4 columns">
+	<h4>Comentarios</h4>
+	<p><strong>No implementado:</strong> la idea es que se puedan comentar los párrafos
+	</p>
+	</div>
+</div>
+<% _.each(paragraphs, function(para, index) { %>
+<div id="paragraph-<%= index %>"class="row paragraph">
+	<div class="source<%= index %> span6 columns">
 	<p><%= para %></p>
 	</div>
-	<div class="translated span6 columns">
-	Esperando la traducción automática...
+	<div class="translated<%= index %> span6 columns">
 	</div>
-
 	<div class="comments span4 columns">
-	<a href="#/cable/<%= identifier %>">Comentar...</a>
 	</div>
 </div>
 <% }); %>
