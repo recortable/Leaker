@@ -11,6 +11,7 @@ window.Leaker =
   Views: {}
 
 $ ->
-  window.router = new Leaker.Routers.CablesRouter()
+  new Leaker.Views.AppView
+  router = new Leaker.Routers.CablesRouter()
   Backbone.history.start();
 

@@ -3,32 +3,14 @@ Leaker.Views.Cables ||= {}
 class Leaker.Views.Cables.SearchView extends Backbone.View
   template: JST["backbone/templates/cables/search"]
 
-  events:
-    "submit #wikileaks-search": "search"
-
   initialize: () ->
     @options.cables.bind('reset', this.addAll);
-    console.log 'options', @options
-    $('#quickSearch').change @search
 
-  search: (e) =>
-    e.preventDefault()
-    e.stopPropagation()
+  searching: (running) =>
+    spinner = this.$('#searching')
+    if running then spinner.show() else spinner.hide()
 
-    searching = this.$('#searching')
-    #searching.show()
     #this.$('tbody').html('')
-
-
-    #term = $('#quickSearch').val()
-    #url = 'http://api.leakfeed.com/v1/cables/find.json?query=' + term + '&callback=?'
-    #console.log url
-    #cables = @options.cables
-    #$.getJSON url, null, (results) ->
-      #searching.hide()
-      #cables.reset results.cables
-    false
-
 
   addAll: () =>
     @options.cables.each(this.addOne)
@@ -39,6 +21,7 @@ class Leaker.Views.Cables.SearchView extends Backbone.View
 
   render: =>
     $(this.el).html(this.template(cables: this.options.cables.toJSON() ))
+    this.$('.term').html("Buscar '#{@options.term}'")
     @addAll()
 
     return this
