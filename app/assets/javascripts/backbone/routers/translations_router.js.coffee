@@ -4,12 +4,19 @@ class Leaker.Routers.TranslationsRouter extends Backbone.Router
     #@translations.reset options.translations
 
   routes:
-    "/cable/:id/new": "newTranslation"
+    "/cable/:id/newTranslation": "newTranslation"
     "cable/:id/edit": "edit"
 
-  newTranslation: ->
-    @view = new Leaker.Views.Translations.NewView(collection: @translations)
-    $("#translations").html(@view.render().el)
+  newTranslation: (identifier) ->
+    request = Leaker.backend.findCable(identifier)
+
+    request.done (cable) ->
+      t = new Leaker.Models.Translation(
+        identifier: cable.get('identifier')
+        original: cable.get('body')
+      )
+      @view = new Leaker.Views.Translations.NewView(model: t)
+      $("#output").html(@view.render().el)
 
   index: ->
     @view = new Leaker.Views.Translations.IndexView(translations: @translations)

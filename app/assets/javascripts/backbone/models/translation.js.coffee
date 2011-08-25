@@ -8,7 +8,7 @@ class Leaker.Models.Translation extends Backbone.Model
     body: null
 
   url: ->
-    ref = this.get 'reference'
+    ref = this.get 'identifier'
     "#{@urlRoot}/#{ref}"
 
 class Leaker.Collections.TranslationsCollection extends Backbone.Collection

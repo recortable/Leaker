@@ -24,17 +24,17 @@ class Leaker.Routers.CablesRouter extends Backbone.Router
       $("#output").html 'La búsqueda ha fallado...'
 
 
-  show: (reference) ->
+  show: (identifier) ->
     $("#output").html 'Abriendo cable...'
-    request = Leaker.backend.findCable(reference)
+    request = Leaker.backend.findCable(identifier)
     $.when(request).done (cable) ->
       view = new Leaker.Views.Cables.ShowView(model: cable)
       $("#output").html(view.render().el)
-      request = Leaker.backend.findTranslation(reference)
+      request = Leaker.backend.findTranslation(identifier)
       $.when(request).done (translation) ->
         cable.set('translation', translation)
       $.when(request).fail () ->
-        console.log("Translation #{reference} missing!")
+        console.log("Translation #{identifier} missing!")
         cable.set(translationState: 'missing')
 
   notfound: ->

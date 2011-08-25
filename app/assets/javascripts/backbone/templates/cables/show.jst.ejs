@@ -5,8 +5,9 @@
 	Pero puedes colaborar añadiendo una tu mismo.
 	</p>
 	<p>
-	<a class="btn small" href="#/cable<%= reference %>/newTranslation">Vale</a>
-	<a class="close btn small" href="#">No de momento</a>
+	<a class="btn small"
+href="#/cable/<%= identifier %>/newTranslation">Vale</a>
+	<a class="closeAction btn small" href="#">No de momento</a>
 	</p>
 </div>
 <% } else if (translationState == 'loading') { %>
@@ -34,13 +35,9 @@
 	</div>
 	<div class="span6 columns">
 	<h4>Castellano</h4>
-	<p><strong>No implementado:</strong> la idea es que un traductor automático haga la primera traducción y luego se refine colaborativamente.
-	</p>
 	</div>
 	<div class="span4 columns">
 	<h4>Comentarios</h4>
-	<p><strong>No implementado:</strong> la idea es que se puedan comentar los párrafos
-	</p>
 	</div>
 </div>
 <% _.each(paragraphs, function(para, index) { %>

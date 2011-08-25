@@ -1,25 +1,17 @@
-<h1>New translation</h1>
+<h1>Añadir traducción<small><%= identifier %></small></h1>
 
+<h3>Texto original</h3>
+<p>Puedes usar un traductor automático (por ejemplo http://translate.google.com) para ayudarte con la traducción.</p>
+<p>Para ello copia el texto original en el traductor. Es
+importante que conserves las líneas de separación ('-----')
+y que revises el texto antes de pegarlo de nuevo aquí</p>
+<textarea><%= original %></textarea>
 <form id="new-translation" name="translation">
-  <div class="field">
-    <label for="reference"> reference:</label>
-    <input type="text" name="reference" id="reference" value=<%= reference %> >
-  </div>
 
-  <div class="field">
-    <label for="title"> title:</label>
-    <input type="text" name="title" id="title" value=<%= title %> >
+<h3>Copia la versión traducida aquí:</h3>
+<textarea name="translated"></textarea>
+    <div class="actions">
+    <input type="submit" value="Guardar" />
   </div>
-
-  <div class="field">
-    <label for="body"> body:</label>
-    <input type="text" name="body" id="body" value=<%= body %> >
-  </div>
-
-  <div class="actions">
-    <input type="submit" value="Create Translation" />
-  </div>
-
 </form>
 
-<a href="#/index">Back</a>

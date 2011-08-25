@@ -23,27 +23,21 @@ class Leaker.Models.Backend
 
     dfd.promise()
 
-  findCable : (reference) ->
-    console.log "findCable #{reference}"
+  findCable : (identifier) ->
+    console.log "findCable #{identifier}"
     dfd = $.Deferred()
-    found = @searchResults.find (cable) ->
-      console.log "Look #{cable.get('reference')}"
-      cable.get('reference') == 'reference'
-    if found?
-      console.log("Found in search results!")
-      dfd.resolve(found)
-    else
-      url = "#{API}/cable/#{reference}.json?callback=?"
-      req = $.getJSON url
-      req.success (result) ->
-        cable = new Leaker.Models.Cable(result)
-        dfd.resolve(cable)
-      req.fail () -> dfd.reject()
+    url = "#{API}/cable/#{identifier}.json?callback=?"
+    req = $.getJSON url
+    req.success (result) ->
+      cable = new Leaker.Models.Cable(result)
+      dfd.resolve(cable)
+    req.fail () -> dfd.reject()
     dfd.promise()
 
-  findTranslation : (reference) ->
+  findTranslation : (identifier) ->
+    console.log "findTranslation #{identifier}"
     dfd = $.Deferred()
-    t = new Leaker.Models.Translation({reference: reference})
+    t = new Leaker.Models.Translation({identifier: identifier})
     t.fetch({
       success: () -> dfd.resolve(t)
       error: () -> dfd.reject()
