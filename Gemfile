@@ -25,6 +25,12 @@ end
 gem 'jquery-rails'
 
 gem 'rails-backbone'
+gem 'omniauth'
+gem 'inherited_resources'
+gem 'kaminari'
+gem 'has_scope'
+gem 'responders'
+gem 'simple_form'
 
 
 # Use unicorn as the web server

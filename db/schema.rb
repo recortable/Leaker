@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20110825042528) do
     t.string   "name"
     t.string   "provider"
     t.string   "uid"
+    t.string   "twitter"
     t.datetime "last_login_at"
     t.integer  "login_count"
     t.datetime "created_at"

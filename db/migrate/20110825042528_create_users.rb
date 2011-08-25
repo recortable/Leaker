@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :provider
       t.string :uid
+      t.string :twitter
       t.datetime :last_login_at
       t.integer :login_count
 
@@ -11,3 +12,4 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
 end
+
