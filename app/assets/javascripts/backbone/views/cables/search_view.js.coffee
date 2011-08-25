@@ -21,7 +21,7 @@ class Leaker.Views.Cables.SearchView extends Backbone.View
 
   render: =>
     $(this.el).html(this.template(cables: this.options.cables.toJSON() ))
-    this.$('.term').html("Buscar '#{@options.term}'")
+    this.$('.term').html("Resultados para '#{@options.term}'")
     @addAll()
 
     return this

@@ -5,6 +5,6 @@ class Leaker.Views.AppView extends Backbone.View
     $('#quickSearch').change (e) ->
       e.preventDefault()
       e.stopPropagation()
-      Backbone.history.navigate("/search/#{$(this).val()}")
+      Backbone.history.navigate("/search/#{$(this).val()}", true)
       false
 
