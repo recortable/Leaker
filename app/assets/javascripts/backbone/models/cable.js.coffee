@@ -1,7 +1,8 @@
 class Leaker.Models.Cable extends Backbone.Model
-  initialize: ->
-    b = this.get('body')
-    this.set 'paragraphs': b.replace('¶', '<br/><br/>')
+  initialize: (attributes) ->
+    body = attributes['body']
+    console.log body
+    this.set('paragraphs': body.replace('¶', '<br/><br/>')) if body?
 
 
 class Leaker.Collections.CablesCollection extends Backbone.Collection

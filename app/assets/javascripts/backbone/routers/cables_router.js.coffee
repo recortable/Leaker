@@ -11,7 +11,7 @@ class Leaker.Routers.CablesRouter extends Backbone.Router
     @cables = new Leaker.Collections.CablesCollection()
 
   intro: ->
-    $("#output").html('Prueba a buscar...')
+    $("#output").html('Prueba a buscar algo...')
 
   search: (term) ->
     $("#output").html 'Buscando...'
