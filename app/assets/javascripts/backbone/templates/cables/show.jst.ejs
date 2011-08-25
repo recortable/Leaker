@@ -5,6 +5,19 @@
 </div>
 
 <div class="body">
-<%= paragraphs %>
+<% _.each(paragraphs, function(para) { %>
+<div class="row">
+	<div class="source span6 columns">
+	<p><%= para %></p>
+	</div>
+	<div class="translated span6 columns">
+	Esperando la traducción automática...
+	</div>
+
+	<div class="comments span4 columns">
+	<a href="#/cable/identifier">Comentar...</a>
+	</div>
+</div>
+<% }); %>
 </div>
 
