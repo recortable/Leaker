@@ -12,19 +12,22 @@ class Leaker.Views.Cables.SearchView extends Backbone.View
     $('#quickSearch').change @search
 
   search: (e) =>
-    searching = this.$('#searching')
-    searching.show()
-    this.$('tbody').html('')
-
     e.preventDefault()
     e.stopPropagation()
-    term = $('#quickSearch').val()
-    url = 'http://api.leakfeed.com/v1/cables/find.json?query=' + term + '&callback=?'
-    cables = @options.cables
-    $.getJSON url, null, (results) ->
-      searching.hide()
-      cables.reset results.cables
 
+    searching = this.$('#searching')
+    #searching.show()
+    #this.$('tbody').html('')
+
+
+    #term = $('#quickSearch').val()
+    #url = 'http://api.leakfeed.com/v1/cables/find.json?query=' + term + '&callback=?'
+    #console.log url
+    #cables = @options.cables
+    #$.getJSON url, null, (results) ->
+      #searching.hide()
+      #cables.reset results.cables
+    false
 
 
   addAll: () =>
