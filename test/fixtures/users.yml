@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  provider: MyString
+  uid: MyString
+  last_login_at: 2011-08-25 06:25:29
+  login_count: 
+
+two:
+  name: MyString
+  provider: MyString
+  uid: MyString
+  last_login_at: 2011-08-25 06:25:29
+  login_count: 

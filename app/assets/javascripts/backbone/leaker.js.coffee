@@ -9,3 +9,8 @@ window.Leaker =
   Collections: {}
   Routers: {}
   Views: {}
+
+$ ->
+  window.router = new Leaker.Routers.CablesRouter()
+  Backbone.history.start();
+
