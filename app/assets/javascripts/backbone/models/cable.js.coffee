@@ -1,4 +1,8 @@
 class Leaker.Models.Cable extends Backbone.Model
+  defaults:
+    translation: null
+    translationState: 'loading'
+
   initialize: (attributes) ->
     body = attributes['body']
     this.set('paragraphs': body.split('¶')) if body?

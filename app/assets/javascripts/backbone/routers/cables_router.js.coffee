@@ -8,29 +8,34 @@ class Leaker.Routers.CablesRouter extends Backbone.Router
     ".*": "notfound"
 
   initialize: (options) ->
-    @cables = new Leaker.Collections.CablesCollection()
 
   intro: ->
     $("#output").html('Prueba a buscar algo...')
 
   search: (term) ->
     $("#output").html 'Buscando...'
-    url = "#{API}/cables/find.json?query=#{term}&callback=?"
-    console.log url
-    cables = @cables
-    $.getJSON url, null, (results) ->
-      cables.reset results.cables
+
+    search = Leaker.backend.searchCables(term)
+    $.when(search).done (cables) ->
       view = new Leaker.Views.Cables.SearchView(cables: cables, term: term)
       $("#output").html(view.render().el)
 
-  show: (id) ->
+    $.when(search).fail ->
+      $("#output").html 'La búsqueda ha fallado...'
+
+
+  show: (reference) ->
     $("#output").html 'Abriendo cable...'
-    url = "#{API}/cable/#{id}.json?callback=?"
-    $.getJSON url, null, (result) ->
-      console.log result
-      cable = new Leaker.Models.Cable(result)
+    request = Leaker.backend.findCable(reference)
+    $.when(request).done (cable) ->
       view = new Leaker.Views.Cables.ShowView(model: cable)
       $("#output").html(view.render().el)
+      request = Leaker.backend.findTranslation(reference)
+      $.when(request).done (translation) ->
+        cable.set('translation', translation)
+      $.when(request).fail () ->
+        console.log("Translation #{reference} missing!")
+        cable.set(translationState: 'missing')
 
   notfound: ->
     alert('not found')

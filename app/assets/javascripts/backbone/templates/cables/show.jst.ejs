@@ -1,3 +1,26 @@
+<div class="translationState">
+<% if (translationState == 'missing') { %>
+<div class="alert-message block-message warning">
+	<p><strong>No hay una traducción para este cable.</strong>
+	Pero puedes colaborar añadiendo una tu mismo.
+	</p>
+	<p>
+	<a class="btn small" href="#/cable<%= reference %>/newTranslation">Vale</a>
+	<a class="close btn small" href="#">No de momento</a>
+	</p>
+</div>
+<% } else if (translationState == 'loading') { %>
+<div class="alert-message block-message warning">
+<p>Cargando traducción...</p>
+</div>
+<% } else { %>
+<div class="alert-message block-message warning">
+<p>Traducción: <%= translationState %></p>
+</div>
+<% } %>
+</div>
+
+
 <h3><%= subject %><small>&nbsp;<%= identifier %></small></h3>
 
 <div class="tags">

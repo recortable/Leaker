@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cable: 
+  user: 
+  body: MyString
+
+two:
+  cable: 
+  user: 
+  body: MyString

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110825042528) do
+ActiveRecord::Schema.define(:version => 20110825112143) do
+
+  create_table "cables", :force => true do |t|
+    t.string   "reference"
+    t.integer  "user_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cables", ["reference"], :name => "index_cables_on_reference"
+  add_index "cables", ["user_id"], :name => "index_cables_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

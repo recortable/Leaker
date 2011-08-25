@@ -10,8 +10,14 @@ window.Leaker =
   Routers: {}
   Views: {}
 
+
+
+
 $ ->
-  new Leaker.Views.AppView
-  router = new Leaker.Routers.CablesRouter()
+  Leaker.backend = new Leaker.Models.Backend
+  Leaker.appView = new Leaker.Views.AppView
+  Leaker.routers = []
+  Leaker.routers.cables = new Leaker.Routers.CablesRouter()
+  Leaker.routers.translations = new Leaker.Routers.TranslationsRouter()
   Backbone.history.start();
 
