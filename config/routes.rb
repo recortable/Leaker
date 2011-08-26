@@ -7,7 +7,8 @@ Leaker::Application.routes.draw do
   resources :translations
 
   namespace :backend do
-    root to: 'users#index'
+    root to: 'cables#index'
+    resources :cables
     resources :users
     resources :translations
   end

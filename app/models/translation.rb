@@ -1,4 +1,10 @@
 class Translation < ActiveRecord::Base
   belongs_to :cable
   belongs_to :user
+
+  validates :cable_id, :presence => true
+  validates :subject, :presence => true
+  validates :body, :presence => true
+  validates :lang, :presence => true
 end
+

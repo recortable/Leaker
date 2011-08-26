@@ -10,7 +10,8 @@ fillForm = ->
   req = loadCable $("#newCableIdentifier")
   req.success (result) ->
     $("#cable_subject").val(result.subject)
-    $("#cable_body").val(result.body)
+    body = result.body.toString()
+    $("#cable_body").val(body)
   req.fail -> $('#output').text('Error conectando con wikileaks. Inténtalo de nuevo más tarde.')
 
 fillCable = ->

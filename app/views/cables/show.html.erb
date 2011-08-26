@@ -4,6 +4,9 @@ No se ha podido contactar con wikileaks.
 </div>
 
 <% if @cable %>
+<div><%= @cable.identifier %></div>
+<h6><%= @cable.subject %></h6>
+<h1 id="subject"><%= @cable.translation.subject %></h1>
 <% else %>
 
 <div id="addTranslationMessage" class="alert-message block-message warning" style="display:none">

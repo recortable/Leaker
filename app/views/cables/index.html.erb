@@ -2,6 +2,20 @@
 <p>Herramienta para la traducción y comentarios colectivos
 de los cables publicados por wikileaks.</p>
 <p><strong>Prueba a utilizar el buscador...</strong></p>
+
+<br/>
+
+<h4>Últimos cables traducidos</h4>
+<table>
+<tbody>
+<% @last_cables.each do |cable| %>
+<tr>
+<td><%= link_to cable.identifier, cable %></td>
+<td><%= cable.subject %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
 <br/><br><br>
 <p>Este software es, por supuesto, código libre.<br/>
 Puedes colaborar aquí:

@@ -9,10 +9,26 @@ class Cable < ActiveRecord::Base
   validates :translated_subject, :presence => true
   validates :translated_body, :presence => true
 
+  after_create :create_translation
+
   def translated_body=(body)
+    @translated_body = body
   end
 
   def translated_subject=(subject)
+    @translated_subject = subject
+  end
+
+  def to_param
+    identifier
+  end
+
+  protected
+  def create_translation
+    if translated_subject.present? and translated_body.present?
+      Translation.create(cable: self, subject: translated_subject,
+        body: translated_body, lang: 'es-es')
+    end
   end
 end
 
