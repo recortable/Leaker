@@ -6,5 +6,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_directory ./application
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/leaker
 

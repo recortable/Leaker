@@ -1,6 +1,9 @@
 Leaker::Application.routes.draw do
-  root to: 'client#show'
+  root to: 'cables#index'
 
+  match "/buscar/:term" => "cables#search"
+  match "/buscar" => "cables#search"
+  resources :cables
   resources :translations
 
   namespace :backend do

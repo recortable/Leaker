@@ -1,0 +1,24 @@
+
+<h1>Buscar '<%= @term %>'</h1>
+
+<div id="searchTerm" style="display:none"><%= @term %></div>
+
+<div id="searchResults">
+<p>Esperando a wikileaks...</p>
+</div>
+
+<script type="text/html" id="cables-tmpl">
+
+<table>
+<thead>
+<th>Referencia</th>
+<th>Título</th>
+</thead>
+<tbody>
+  <# for ( var i = 0; i < cables.length; i++ ) { #>
+    <tr><td><a href="/cables/<#= cables[i].identifier #>"><#= cables[i].identifier #></a></td>
+    <td><#= cables[i].subject #></td>
+  <# } #></tr>
+</tbody></table>
+</script>
+

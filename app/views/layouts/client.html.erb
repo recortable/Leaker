@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Leaker</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag    "client" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -10,12 +10,12 @@
 <div class="topbar">
       <div class="fill">
         <div class="container">
-          <h3><a href="/">Leaker</a></h3>
+          <h3><a href="#">Leaker</a></h3>
           <ul>
             <!-- li class="active"><a href="#">Inicio</a></li-->
           </ul>
-          <form action="/buscar">
-            <input type="text" name="term" id="term" placeholder="Buscar wikileaks...">
+          <form action="">
+            <input type="text" id="quickSearch" placeholder="Buscar wikileaks...">
           </form>
         </div>
       </div> <!-- /fill -->

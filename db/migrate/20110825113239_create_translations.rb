@@ -3,7 +3,9 @@ class CreateTranslations < ActiveRecord::Migration
     create_table :translations do |t|
       t.references :cable
       t.references :user
-      t.string :body
+      t.string :subject
+      t.text :body
+      t.string :lang
 
       t.timestamps
     end
@@ -11,3 +13,4 @@ class CreateTranslations < ActiveRecord::Migration
     add_index :translations, :user_id
   end
 end
+

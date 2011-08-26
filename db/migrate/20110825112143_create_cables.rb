@@ -3,7 +3,8 @@ class CreateCables < ActiveRecord::Migration
     create_table :cables do |t|
       t.string :identifier
       t.references :user
-      t.string :title
+      t.text :body
+      t.string :subject
 
       t.timestamps
     end

@@ -11,18 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110825112143) do
+ActiveRecord::Schema.define(:version => 20110825113239) do
 
   create_table "cables", :force => true do |t|
-    t.string   "reference"
+    t.string   "identifier"
     t.integer  "user_id"
-    t.string   "title"
+    t.text     "body"
+    t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "cables", ["reference"], :name => "index_cables_on_reference"
+  add_index "cables", ["identifier"], :name => "index_cables_on_identifier"
   add_index "cables", ["user_id"], :name => "index_cables_on_user_id"
+
+  create_table "translations", :force => true do |t|
+    t.integer  "cable_id"
+    t.integer  "user_id"
+    t.string   "subject"
+    t.text     "body"
+    t.string   "lang"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "translations", ["cable_id"], :name => "index_translations_on_cable_id"
+  add_index "translations", ["user_id"], :name => "index_translations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
