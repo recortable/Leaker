@@ -5,3 +5,10 @@ div.page {
 
 form div.row textarea {width: 100%;}
 
+table#cableParagraphs {
+  th, td {width: 30%;}
+}
+
+form div.input {margin-left: 0;margin-bottom: 10px;}
+form span.error {display:block;color: #c00;}
+

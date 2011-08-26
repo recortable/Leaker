@@ -1,28 +1,24 @@
 
-<h1>Traducir un cable<small><%= @cable.identifier %></small></h1>
+<div id="newCableIdentifier"><%= @cable.identifier %></div>
+<h1>Traducir cable</h1>
 <div id="output">
-<div id="newCableIdentifier" style="display:none"><%= @cable.identifier %></div>
-<%= form_for @cable, html: {class: 'form-stacked'} do |form| %>
+<%= simple_form_for @cable, html: {class: 'form-stacked'} do |form| %>
 <%= form.hidden_field :identifier %>
 <fieldset>
 <div class="row">
 <div class="span7 columns">
 <h3>Original</h3>
-<%= form.label :subject %>
-<%= form.text_field :subject %>
-<%= form.label :body %>
-<%= form.text_area :body %>
+<%= form.input :subject %>
+<%= form.input :body %>
 </div>
 <div class="span7 columns">
 <h3>Traduccion</h3>
-<%= form.label :translated_subject %>
-<%= form.text_field :translated_subject %>
-<%= form.label :translated_body %>
-<%= form.text_area :translated_body %>
+<%= form.input :translated_subject %>
+<%= form.input :translated_body, as: :text %>
 </div>
 </div>
 </fieldset>
-<div>
+<div class="actions">
 <%= form.submit 'Guardar traducción' %>
 </div>
 <% end %>

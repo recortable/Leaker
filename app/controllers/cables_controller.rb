@@ -1,4 +1,6 @@
 class CablesController < ApplicationController
+  respond_to :html
+
   def index
   end
 
@@ -7,16 +9,20 @@ class CablesController < ApplicationController
   end
 
   def show
+    @identifier = params[:id]
     @cable = Cable.find_by_identifier(params[:id])
-    if !@cable
-      redirect_to new_cable_path(:identifier => params[:id])
-    end
   end
 
   def new
     params[:cable] ||= {}
     params[:cable][:identifier] = params[:identifier]
     @cable = Cable.new(params[:cable])
+  end
+
+  def create
+    @cable = Cable.new(params[:cable])
+    @cable.save
+    respond_with @cable
   end
 end
 

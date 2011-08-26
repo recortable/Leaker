@@ -4,6 +4,11 @@ class Cable < ActiveRecord::Base
   belongs_to :user
   has_one :translation
 
+  validates :subject, :presence => true
+  validates :body, :presence => true
+  validates :translated_subject, :presence => true
+  validates :translated_body, :presence => true
+
   def translated_body=(body)
   end
 

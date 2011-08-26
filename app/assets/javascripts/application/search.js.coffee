@@ -1,13 +1,39 @@
 API = 'http://api.leakfeed.com/v1'
 
-fillForm = ->
-  identifier = $("#newCableIdentifier").text()
+loadCable = (element) ->
+  identifier = element.text()
   url = "#{API}/cable/#{identifier}.json?callback=?"
-  req = $.getJSON url
+  $.getJSON url
+
+
+fillForm = ->
+  req = loadCable $("#newCableIdentifier")
   req.success (result) ->
     $("#cable_subject").val(result.subject)
     $("#cable_body").val(result.body)
   req.fail -> $('#output').text('Error conectando con wikileaks. Inténtalo de nuevo más tarde.')
+
+fillCable = ->
+  req = loadCable $('#cableIdentifier')
+  req.success (result) ->
+    $("#cable_subject").val(result.subject)
+    $("#cable_body").val(result.body)
+    $("#subject").html(result.subject)
+    original = result.body.split('¶')
+    paragraphs = {original: original}
+    template = $('#paragraphs-tmpl').html()
+    $("#cableParagraphs tbody").html(tmpl(template, paragraphs))
+    $("#addTranslationMessage").show()
+
+    $("#addTranslationMessage .submitAction").click (e) ->
+      $("form#new_cable").submit()
+      false
+
+    $("#addTranslationMessage .closeAction").click (e) ->
+      $("#addTranslationMessage").hide()
+      false
+
+  req.fail -> $("#apiError").show()
 
 $ ->
   if $('#searchTerm')[0]
@@ -19,6 +45,6 @@ $ ->
       console.log results.cables
       $("#searchResults").html(tmpl(template, results))
 
-  if $("#newCableIdentifier")[0]
-    fillForm()
+  fillForm() if $("#newCableIdentifier")[0]
+  fillCable() if $("#cableIdentifier")[0]
 

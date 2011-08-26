@@ -1,0 +1,49 @@
+
+<div id="apiError" style="display:none">
+No se ha podido contactar con wikileaks.
+</div>
+
+<% if @cable %>
+<% else %>
+
+<div id="addTranslationMessage" class="alert-message block-message warning" style="display:none">
+	<p><strong>No hay una traducción para este cable,</strong>
+	Pero siempre puedes colaborar en la traducción.
+	</p>
+	<p>
+	<a class="submitAction btn small" href="#">Vale</a>
+	<a class="closeAction btn small" href="#">No de momento</a>
+	</p>
+</div>
+
+<div style="display:none">
+<%= form_for Cable.new({identifier: @identifier}) do |form| %>
+  <%= form.text_field :identifier %>
+  <%= form.text_field :subject %>
+  <%= form.text_area :body %>
+<% end %>
+</div>
+
+<div id="cableIdentifier"><%= @identifier %></div>
+<h1 id="subject"><%= @identifier %></h1>
+
+<table id="cableParagraphs">
+<thead>
+<th><h4>Inglés</h4></th><th><h4>Castellano</h4></th>
+<th><h4>Comentarios</h4></th>
+</thead>
+<tbody></tbody>
+</table>
+
+<% end %>
+
+<script type="text/html" id="paragraphs-tmpl">
+  <# for ( var i = 0; i < original.length; i++ ) { #>
+    <tr>
+      <td><#= original[i] #></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  <# } #>
+</script>
+
