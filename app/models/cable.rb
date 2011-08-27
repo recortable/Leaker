@@ -13,6 +13,10 @@ class Cable < ActiveRecord::Base
 
   after_create :create_translation
 
+  def self.get(identifier)
+    Cable.find_by_identifier(identifier)
+  end
+
   def self.get!(identifier)
     Cable.find_by_identifier!(identifier)
   end

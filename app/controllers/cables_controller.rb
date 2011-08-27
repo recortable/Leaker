@@ -11,7 +11,7 @@ class CablesController < ApplicationController
 
   def show
     @identifier = params[:id]
-    @cable = Cable.find_by_identifier(params[:id])
+    @cable = Cable.get(params[:id])
     @translation = @cable.translation if @cable
   end
 

@@ -1,0 +1,14 @@
+<%= link_to raw('&larr; Back to list'), [:backend, resource_class] %>
+<%= title resource_class.name %>
+
+<h2>Attributes</h2>
+<dl>
+<% attributes.each do |attribute| %>
+<dt><%= resource_class.human_attribute_name(attribute) %></dt>
+<dd><%= resource.public_send(attribute).to_s %></dd>
+<% end %>
+</dl>
+<div class="actions">
+<%= link_to 'Edit', edit_resource_path(resource), class: 'btn' %>
+</div>
+
