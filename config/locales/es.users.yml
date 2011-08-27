@@ -1,0 +1,16 @@
+es:
+  simple_form:
+    labels:
+      user:
+        name: 'Nombre'
+        email: 'Dirección de correo electrónico'
+        description: 'Breve descripción'
+        telephones: 'Números de teléfono de contacto'
+        password: 'Contraseña'
+        password_confirmation: 'Repite la contraseña'
+    hints:
+      user:
+        description: 'Tienes 300 caracteres para describirte a ti mismx'
+        password: 'Déjala en blanco si no deseas modificarla'
+        password_confirmation: 'Haz que coincida con la contraseña'
+

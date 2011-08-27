@@ -7,32 +7,7 @@ No se ha podido contactar con wikileaks.
 <div><%= @cable.identifier %></div>
 <h6><%= @cable.subject %></h6>
 <h1 id="subject"><%= @cable.translation.subject %></h1>
-
-<div id="paragraphs" class="row">
-  <div class="original span6 columns">
-    <h4>Texto original</h4>
-  </div>
-  <div class="translated span6 columns">
-    <h4>Traducción</h4>
-  </div>
-  <div class="comments span4 columns">
-    <h4>Comentarios</h4>
-  </div>
-</div>
-<% @cable.paragraphs.each do |paragraph| %>
-<div id="paragraphs" class="row">
-  <div class="original span6 columns">
-    <%= paragraph.original %>
-  </div>
-  <div class="translated span6 columns">
-  </div>
-  <div class="comments span4 columns">
-  </div>
-</div>
-<% end %>
-
 <% else %>
-
 <div id="addTranslationMessage" class="alert-message block-message warning" style="display:none">
 	<p><strong>No hay una traducción para este cable,</strong>
 	Pero siempre puedes colaborar en la traducción.
@@ -53,24 +28,59 @@ No se ha podido contactar con wikileaks.
 
 <div id="cableIdentifier"><%= @identifier %></div>
 <h1 id="subject"><%= @identifier %></h1>
-
-<table id="cableParagraphs">
-<thead>
-<th><h4>Inglés</h4></th><th><h4>Castellano</h4></th>
-<th><h4>Comentarios</h4></th>
-</thead>
-<tbody></tbody>
-</table>
-
 <% end %>
 
-<script type="text/html" id="paragraphs-tmpl">
-  <# for ( var i = 0; i < original.length; i++ ) { #>
-    <tr>
-      <td><#= original[i] #></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  <# } #>
-</script>
+
+<div id="cableParagraphs">
+  <div class="header row">
+    <div class="original span6 columns">
+      <h4>Texto original</h4>
+    </div>
+    <div class="translated span6 columns">
+      <h4>Traducción</h4>
+    </div>
+    <div class="comments span4 columns">
+      <h4>Comentarios</h4>
+    </div>
+  </div>
+  <div class="paragraphs">
+
+<% if @cable %>
+  <% @cable.paragraphs.each do |paragraph| %>
+  <div class="row">
+    <div class="original span6 columns">
+      <%= paragraph.original %>
+    </div>
+    <div class="translated span6 columns">
+      <%= paragraph.translated %>
+      <div class="actions">
+      <%= link_to 'mejorar traducción',
+        edit_cable_paragraph_path(@cable, paragraph.id) %> /
+      <%= link_to 'comentar' %>
+      </div>
+    </div>
+    <div class="comments span4 columns">
+    </div>
+  </div>
+  <% end %>
+
+<% else %>
+  <script type="text/html" id="paragraphs-tmpl">
+    <# for ( var i = 0; i < original.length; i++ ) { #>
+      <div class="row">
+        <div class="translated span6 columns">
+          <#= original[i] #>
+        </div>
+        <div class="translated span6 columns">
+          &nbsp;
+        </div>
+        <div class="translated span6 columns">
+            &nbsp;
+        </div>
+      </div>
+    <# } #>
+  </script>
+<% end %>
+  </div>
+</div>
 

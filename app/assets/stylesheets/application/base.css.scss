@@ -11,4 +11,11 @@ table#cableParagraphs {
 
 form div.input {margin-left: 0;margin-bottom: 10px;}
 form span.error {display:block;color: #c00;}
+form#new_paragraph textarea {width: 100%;}
+
+div#cableParagraphs {
+  div.row {margin: 5px 0; padding: 5px 0;
+    border-bottom: 1px solid #efefef;}
+  div.actions {padding: 2px; margin: 2px 0 0 0;}
+}
 

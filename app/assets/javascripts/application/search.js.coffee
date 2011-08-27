@@ -23,7 +23,7 @@ fillCable = ->
     original = result.body.split('¶')
     paragraphs = {original: original}
     template = $('#paragraphs-tmpl').html()
-    $("#cableParagraphs tbody").html(tmpl(template, paragraphs))
+    $("#cableParagraphs .paragraphs").html(tmpl(template, paragraphs))
     $("#addTranslationMessage").show()
 
     $("#addTranslationMessage .submitAction").click (e) ->

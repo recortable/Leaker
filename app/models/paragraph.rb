@@ -3,6 +3,7 @@ class Paragraph
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
+  attr_accessor :id
   attr_accessor :cable_id, :translation_id
   attr_accessor :position, :original, :translated
 

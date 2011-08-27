@@ -1,0 +1,37 @@
+<div><%= @cable.identifier %></div>
+<h3><%= @cable.translation.subject %></h3>
+
+<div id="cableParagraphs">
+  <div class="header row">
+    <div class="original span6 columns">
+      <h4>Texto original</h4>
+    </div>
+    <div class="translated span6 columns">
+      <h4>Traducción</h4>
+    </div>
+    <div class="comments span4 columns">
+      <h4>&nbsp;</h4>
+    </div>
+  </div>
+  <div class="header row">
+    <div class="original span6 columns">
+      <%= @paragraph.original %>
+    </div>
+    <div class="translated span6 columns">
+      <%= @paragraph.translated %>
+    </div>
+    <div class="comments span4 columns">
+      &nbsp;
+    </div>
+</div>
+
+<h1>Traducción mejorada</h1>
+
+<%= simple_form_for [@cable, @paragraph],
+html: {class: 'form-stacked'}  do |form| %>
+<div class="row"><div class="span12 columns">
+<%= form.input :translated, :as => :text %>
+</div></div>
+<%= form.submit 'Guardar' %>
+<% end %>
+

@@ -3,7 +3,9 @@ Leaker::Application.routes.draw do
 
   match "/buscar/:term" => "cables#search"
   match "/buscar" => "cables#search"
-  resources :cables
+  resources :cables do
+      resources :paragraphs
+  end
   resources :translations
 
   namespace :backend do

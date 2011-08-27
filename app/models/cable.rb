@@ -13,6 +13,10 @@ class Cable < ActiveRecord::Base
 
   after_create :create_translation
 
+  def self.get!(identifier)
+    Cable.find_by_identifier!(identifier)
+  end
+
   def translated_body=(body)
     @translated_body = body
   end
@@ -28,13 +32,21 @@ class Cable < ActiveRecord::Base
   def paragraphs
     return @paragraphs if @paragraphs
     @paragraphs = []
-    original_sliced = body.split('¶')
-    original_sliced.each do |p|
-      @paragraphs << Paragraph.new(original: p)
+    original = body.split('¶')
+    translated = translation.body.split('¶')
+    combined = original.zip(translated)
+    id = 0
+    combined.each do |o, t|
+      @paragraphs << Paragraph.new(id: id, original: o, translated: t)
+      id += 1
     end
     @paragraphs
   end
 
+  def paragraph(id)
+    id = id.to_i
+    id < paragraphs.size ? paragraphs[id] : nil
+  end
 
   protected
   def create_translation
