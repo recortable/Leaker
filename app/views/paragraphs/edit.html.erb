@@ -1,4 +1,4 @@
-<div><%= @cable.identifier %></div>
+<div><%= link_to @cable.identifier, @cable %></div>
 <h3><%= @cable.translation.subject %></h3>
 
 <div id="cableParagraphs">
@@ -13,18 +13,9 @@
       <h4>&nbsp;</h4>
     </div>
   </div>
-  <div class="header row">
-    <div class="original span6 columns">
-      <%= @paragraph.original %>
-    </div>
-    <div class="translated span6 columns">
-      <%= @paragraph.translated %>
-    </div>
-    <div class="comments span4 columns">
-      &nbsp;
-    </div>
+  <%= render @paragraph %>
 </div>
-
+<br/><br/>
 <h1>Traducción mejorada</h1>
 
 <%= simple_form_for [@cable, @paragraph],
@@ -32,6 +23,9 @@ html: {class: 'form-stacked'}  do |form| %>
 <div class="row"><div class="span12 columns">
 <%= form.input :translated, :as => :text %>
 </div></div>
-<%= form.submit 'Guardar' %>
+<div class="actions">
+<%= form.submit 'Guardar', class: 'btn' %>
+<%= link_to 'Cancelar', @cable %>
+</div>
 <% end %>
 

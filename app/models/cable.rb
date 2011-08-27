@@ -37,7 +37,9 @@ class Cable < ActiveRecord::Base
     combined = original.zip(translated)
     id = 0
     combined.each do |o, t|
-      @paragraphs << Paragraph.new(id: id, original: o, translated: t)
+      @paragraphs << Paragraph.new(id: id,
+        cable: self, translation: translation,
+        original: o, translated: t)
       id += 1
     end
     @paragraphs

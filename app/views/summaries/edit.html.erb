@@ -1,0 +1,14 @@
+<div><%= link_to @cable.identifier, @cable %></div>
+<h5><%= @translation.subject %></h5>
+<h1>Editar resúmen</h1>
+
+<%= simple_form_for @translation,
+  url: translation_summary_path,
+  html: {class: 'form-stacked'} do |form| %>
+<%= form.input :summary, :as => :text %>
+<div class="actions">
+<%= form.submit 'Guardar', :class => 'btn' %>
+<%= link_to 'Cancelar', @cable %>
+</div>
+<% end %>
+

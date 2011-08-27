@@ -6,7 +6,29 @@ No se ha podido contactar con wikileaks.
 <% if @cable %>
 <div><%= @cable.identifier %></div>
 <h6><%= @cable.subject %></h6>
-<h1 id="subject"><%= @cable.translation.subject %></h1>
+
+<% if @cable.translation.accuracy.blank? %>
+<div class="alert-message block-message warning">
+	<p><strong>La traducción de este cable ha sido hecha automáticamente,</strong>
+	por eso es muy probable que algunos párrafos no se entiendan.
+  Por favor, ayúdanos mejorando la traducción (especialmente de los párrafos más relevantes).
+</p>
+</div>
+<% end %>
+
+<h1 id="subject"><%= @translation.subject %></h1>
+
+
+<div class="summary">
+<h3>Resúmen</h3>
+<%= @translation.summary %>
+<div class="bottom actions">
+  Cable: <%= link_to 'editar resúmen', edit_translation_summary_path(@translation) %> /
+  <%= link_to 'comentar' %>
+</div>
+</div>
+
+
 <% else %>
 <div id="addTranslationMessage" class="alert-message block-message warning" style="display:none">
 	<p><strong>No hay una traducción para este cable,</strong>
@@ -40,30 +62,13 @@ No se ha podido contactar con wikileaks.
       <h4>Traducción</h4>
     </div>
     <div class="comments span4 columns">
-      <h4>Comentarios</h4>
+      <h4>&nbsp;</h4>
     </div>
   </div>
   <div class="paragraphs">
 
 <% if @cable %>
-  <% @cable.paragraphs.each do |paragraph| %>
-  <div class="row">
-    <div class="original span6 columns">
-      <%= paragraph.original %>
-    </div>
-    <div class="translated span6 columns">
-      <%= paragraph.translated %>
-      <div class="actions">
-      <%= link_to 'mejorar traducción',
-        edit_cable_paragraph_path(@cable, paragraph.id) %> /
-      <%= link_to 'comentar' %>
-      </div>
-    </div>
-    <div class="comments span4 columns">
-    </div>
-  </div>
-  <% end %>
-
+<%= render @cable.paragraphs %>
 <% else %>
   <script type="text/html" id="paragraphs-tmpl">
     <# for ( var i = 0; i < original.length; i++ ) { #>

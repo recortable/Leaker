@@ -5,17 +5,31 @@ div.page {
 
 form div.row textarea {width: 100%;}
 
-table#cableParagraphs {
-  th, td {width: 30%;}
-}
-
 form div.input {margin-left: 0;margin-bottom: 10px;}
 form span.error {display:block;color: #c00;}
-form#new_paragraph textarea {width: 100%;}
+form textarea {width: 90%; height: 10em;}
 
-div#cableParagraphs {
-  div.row {margin: 5px 0; padding: 5px 0;
-    border-bottom: 1px solid #efefef;}
-  div.actions {padding: 2px; margin: 2px 0 0 0;}
+div.paragraph.row {
+    margin: 5px 0; padding: 5px 0;
+    border-top: 0px solid whiteSmoke;
 }
+
+
+div.bottom.actions {
+background: whiteSmoke;
+margin: 0 0 20px 0;
+padding: 2px 5px;
+border-bottom: 1px solid #DDD;
+border-top: 0;
+-webkit-border-radius: 0 0 3px 3px;
+-moz-border-radius: 0 0 3px 3px;
+border-radius: 0 0 3px 3px;
+}
+
+.actions {padding: 2px; margin: 2px 0 0 0;}
+
+div.summary {margin-bottom:30px;}
+
+#footer {margin-top: 40px; padding: 5px 0; text-align:center;
+border-top: 1px solid #ddd;}
 

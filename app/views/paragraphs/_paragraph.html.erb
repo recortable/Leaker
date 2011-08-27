@@ -1,0 +1,17 @@
+<div class="paragraph row">
+  <div class="original span6 columns">
+    ¶ <%= paragraph.original %>
+  </div>
+  <div class="translated span6 columns">
+    ¶ <%= paragraph.translated %>
+  </div>
+  <div class="comments span1 columns">
+    &nbsp;
+  </div>
+</div>
+<div class="bottom actions">Párrafo:
+<%= link_to 'mejorar traducción',
+  edit_cable_paragraph_path(paragraph.cable, paragraph.id) %> /
+<%= link_to 'comentar' %>
+</div>
+

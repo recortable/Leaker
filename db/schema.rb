@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110825113239) do
+ActiveRecord::Schema.define(:version => 20110827121127) do
 
   create_table "cables", :force => true do |t|
     t.string   "identifier"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20110825113239) do
     t.string   "lang"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "summary",    :limit => 512
+    t.string   "accuracy",   :limit => 8
   end
 
   add_index "translations", ["cable_id"], :name => "index_translations_on_cable_id"
