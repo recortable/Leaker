@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Cable < ActiveRecord::Base
   attr_reader :translated_body, :translated_subject
 
@@ -22,6 +24,17 @@ class Cable < ActiveRecord::Base
   def to_param
     identifier
   end
+
+  def paragraphs
+    return @paragraphs if @paragraphs
+    @paragraphs = []
+    original_sliced = body.split('¶')
+    original_sliced.each do |p|
+      @paragraphs << Paragraph.new(original: p)
+    end
+    @paragraphs
+  end
+
 
   protected
   def create_translation

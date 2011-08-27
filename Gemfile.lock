@@ -30,6 +30,8 @@ GEM
       activesupport (= 3.1.0.rc6)
     activesupport (3.1.0.rc6)
       multi_json (~> 1.0)
+    acts-as-taggable-on (2.1.1)
+      rails
     addressable (2.2.4)
     ansi (1.3.0)
     arel (2.2.1)
@@ -108,6 +110,8 @@ GEM
       oa-more (= 0.2.6)
       oa-oauth (= 0.2.6)
       oa-openid (= 0.2.6)
+    paper_trail (2.3.1)
+      rails (~> 3)
     pg (0.11.0)
     polyglot (0.3.2)
     pyu-ruby-sasl (0.0.3.3)
@@ -180,12 +184,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 2.1.0)
   coffee-rails (~> 3.1.0.rc)
   has_scope
   inherited_resources
   jquery-rails
   kaminari
   omniauth
+  paper_trail
   pg
   rails (= 3.1.0.rc6)
   rails-backbone

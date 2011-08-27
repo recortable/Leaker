@@ -7,6 +7,30 @@ No se ha podido contactar con wikileaks.
 <div><%= @cable.identifier %></div>
 <h6><%= @cable.subject %></h6>
 <h1 id="subject"><%= @cable.translation.subject %></h1>
+
+<div id="paragraphs" class="row">
+  <div class="original span6 columns">
+    <h4>Texto original</h4>
+  </div>
+  <div class="translated span6 columns">
+    <h4>Traducción</h4>
+  </div>
+  <div class="comments span4 columns">
+    <h4>Comentarios</h4>
+  </div>
+</div>
+<% @cable.paragraphs.each do |paragraph| %>
+<div id="paragraphs" class="row">
+  <div class="original span6 columns">
+    <%= paragraph.original %>
+  </div>
+  <div class="translated span6 columns">
+  </div>
+  <div class="comments span4 columns">
+  </div>
+</div>
+<% end %>
+
 <% else %>
 
 <div id="addTranslationMessage" class="alert-message block-message warning" style="display:none">

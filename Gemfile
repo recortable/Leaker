@@ -31,6 +31,8 @@ gem 'kaminari'
 gem 'has_scope'
 gem 'responders'
 gem 'simple_form'
+gem 'acts-as-taggable-on', '~>2.1.0'
+gem 'paper_trail'
 
 
 # Use unicorn as the web server
