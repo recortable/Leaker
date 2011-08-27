@@ -4,7 +4,7 @@ No se ha podido contactar con wikileaks.
 </div>
 
 <% if @cable %>
-<div><%= @cable.identifier %></div>
+<%= title @cable.identifier, :div %>
 <h6><%= @cable.subject %></h6>
 
 <% if @cable.translation.accuracy.blank? %>
@@ -21,7 +21,7 @@ No se ha podido contactar con wikileaks.
 
 <div class="summary">
 <h3>Resúmen</h3>
-<%= @translation.summary %>
+<%= markdown @translation.summary %>
 <div class="bottom actions">
   Cable: <%= link_to 'editar resúmen', edit_translation_summary_path(@translation) %> /
   <%= link_to 'comentar' %>

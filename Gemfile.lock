@@ -148,6 +148,7 @@ GEM
       thor (~> 0.14.6)
     rake (0.9.2)
     rdoc (3.9.3)
+    redcarpet (1.17.2)
     responders (0.6.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -195,6 +196,7 @@ DEPENDENCIES
   pg
   rails (= 3.1.0.rc6)
   rails-backbone
+  redcarpet
   responders
   sass-rails (~> 3.1.0.rc)
   simple_form
