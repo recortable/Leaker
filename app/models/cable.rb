@@ -4,12 +4,12 @@ class Cable < ActiveRecord::Base
   attr_reader :translated_body, :translated_subject
 
   belongs_to :user
-  has_one :translation
+  has_one :translation, dependent: :destroy
 
-  validates :subject, :presence => true
-  validates :body, :presence => true
-  validates :translated_subject, :presence => true
-  validates :translated_body, :presence => true
+  validates :subject, presence: true
+  validates :body, presence: true
+  validates :translated_subject, presence:  true
+  validates :translated_body, presence: true
 
   after_create :create_translation
 

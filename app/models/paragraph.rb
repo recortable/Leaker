@@ -18,13 +18,14 @@ class Paragraph
   end
 
   def update(params)
-    self.translation = params[:translation]
-    body = cable.paragraphs.map {|t| t.translation}.join(SEPARATOR)
-    cable.translation.update_attribute(:body, body)
+    self.translated = params[:translated]
+    array = cable.paragraphs.collect {|p| p.translated}
+    new_body = array.join(SEPARATOR)
+    cable.translation.update_attribute(:body, new_body)
   end
 
   def persisted?
-    false
+    true
   end
 end
 

@@ -1,3 +1,5 @@
+require "rtranslate"
+
 class CablesController < ApplicationController
   respond_to :html
 

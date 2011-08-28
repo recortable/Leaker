@@ -3,8 +3,9 @@ API = 'http://api.leakfeed.com/v1'
 loadCable = (element) ->
   identifier = element.text()
   url = "#{API}/cable/#{identifier}.json?callback=?"
-  $.getJSON url
-
+  req = $.getJSON url
+  req.always -> $("#waitingForWikileaks").hide()
+  req
 
 fillForm = ->
   req = loadCable $("#newCableIdentifier")
@@ -35,6 +36,7 @@ fillCable = ->
       false
 
   req.fail -> $("#apiError").show()
+
 
 $ ->
   if $('#searchTerm')[0]

@@ -34,6 +34,7 @@ gem 'simple_form'
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'paper_trail'
 gem 'redcarpet'
+gem 'sishen-rtranslate'
 
 
 # Use unicorn as the web server

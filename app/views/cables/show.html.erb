@@ -3,6 +3,7 @@
 No se ha podido contactar con wikileaks.
 </div>
 
+
 <% if @cable %>
 <%= title @cable.identifier, :div %>
 <h6><%= @cable.subject %></h6>
@@ -30,6 +31,12 @@ No se ha podido contactar con wikileaks.
 
 
 <% else %>
+<div id="waitingForWikileaks" class="alert-message block-message warning">
+Conectando con wikileaks, espera un momento...
+</div>
+<div id="apiError" class="alert-message block-message error" style="display:none">
+No se ha podido conectar con wikileaks. Inténtalo de nuevo más tarde.
+</div>
 <div id="addTranslationMessage" class="alert-message block-message warning" style="display:none">
 	<p><strong>No hay una traducción para este cable,</strong>
 	Pero siempre puedes colaborar en la traducción.
