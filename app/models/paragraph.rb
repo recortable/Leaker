@@ -18,10 +18,14 @@ class Paragraph
   end
 
   def update(params)
+    before_body = self.translated
     self.translated = params[:translated]
     array = cable.paragraphs.collect {|p| p.translated}
     new_body = array.join(SEPARATOR)
     cable.translation.update_attribute(:body, new_body)
+
+    cable.build_activity(model_position: id,
+      action: 'update_paragraph', backup: before_body)
   end
 
   def persisted?

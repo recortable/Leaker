@@ -16,8 +16,10 @@ ruby skills.
 Look at routes.rb is a recommended place to start. Take a look also
 to the schema.rb.
 
-Since the application was built VERY quickly, no documentation or
-tests are done.
+For the css the excelent bootstrap library from twitter is used:
+http://twitter.github.com/bootstrap
+
+Unfortunately no documentation or tests are done (yet).
 
 ### Application structure
 

@@ -54,6 +54,12 @@ class Cable < ActiveRecord::Base
     id < paragraphs.size ? paragraphs[id] : nil
   end
 
+  def build_activity(params)
+    defaults = {model_class: 'Cable', model_id: self.id,
+      model_title: translation.subject, action: 'update'}
+    Activity.create(defaults.update(params))
+  end
+
   protected
   def create_translation
     if translated_subject.present? and translated_body.present?

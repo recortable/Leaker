@@ -1,10 +1,9 @@
-require "rtranslate"
-
 class CablesController < ApplicationController
   respond_to :html
 
   def index
     @last_cables = Cable.all
+    @last_activity = Activity.all
   end
 
   def search

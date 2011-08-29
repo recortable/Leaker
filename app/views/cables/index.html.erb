@@ -5,6 +5,8 @@ de los cables publicados por wikileaks.</p>
 
 <br/>
 
+<div id="dashboard" class="row">
+<div id="last_cables" class="span10 columns">
 <h4>Últimos cables traducidos</h4>
 <table>
 <tbody>
@@ -16,4 +18,16 @@ de los cables publicados por wikileaks.</p>
 <% end %>
 </tbody>
 </table>
+</div>
+<div id="last_activity" class="span6 columns">
+<h4>Actividad reciente</h4>
+<table>
+<tbody>
+<% @last_activity.each do |activity| %>
+<%= render activity %>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
 

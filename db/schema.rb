@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110827121127) do
+ActiveRecord::Schema.define(:version => 20110828202007) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "model_title",    :limit => 64
+    t.string   "model_class",    :limit => 32
+    t.integer  "model_id"
+    t.integer  "model_position"
+    t.string   "action",         :limit => 16
+    t.string   "backup"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["model_class"], :name => "index_activities_on_model_class"
+  add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
 
   create_table "cables", :force => true do |t|
     t.string   "identifier"
