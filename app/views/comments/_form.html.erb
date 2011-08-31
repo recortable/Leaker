@@ -1,0 +1,22 @@
+
+<%= simple_form_for [@cable, @comment] do |form| %>
+<% if @comment.new_record? %>
+<%= form.input :identifier, as: :hidden %>
+<%= form.input :paragraph_id, as: :hidden %>
+<% end %>
+<div class="row">
+<div class="span6 columns">
+<h4>Párrafo</h4>
+<%= @paragraph.translated %>
+</div>
+<div class="span6 columns">
+<h4>Comentario</h4>
+<%= form.input :body, as: :text, label: false %>
+</div>
+</div>
+
+<div class="actions">
+<%= form.submit 'Guardar', class: 'btn' %>
+</div>
+<% end %>
+

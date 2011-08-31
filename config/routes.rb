@@ -5,6 +5,7 @@ Leaker::Application.routes.draw do
   match "/buscar" => "cables#search"
   resources :cables do
       resources :paragraphs
+      resources :comments
   end
   resources :translations do
     resource :summary
@@ -16,6 +17,7 @@ Leaker::Application.routes.draw do
     resources :cables
     resources :users
     resources :translations
+    resources :comments
   end
 
   match "/auth/:provider/callback" => "sessions#create"

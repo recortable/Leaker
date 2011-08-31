@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828202007) do
+ActiveRecord::Schema.define(:version => 20110831150539) do
 
   create_table "activities", :force => true do |t|
     t.string   "model_class", :limit => 32
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(:version => 20110828202007) do
 
   add_index "cables", ["identifier"], :name => "index_cables_on_identifier"
   add_index "cables", ["user_id"], :name => "index_cables_on_user_id"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "paragraph_id"
+    t.string   "identifier",   :limit => 128
+    t.string   "body",         :limit => 384
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["identifier"], :name => "index_comments_on_identifier"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "translations", :force => true do |t|
     t.integer  "cable_id"

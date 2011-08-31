@@ -10,11 +10,18 @@ class Paragraph
   attr_accessor :id
   attr_accessor :cable, :translation
   attr_accessor :position, :original, :translated
+  attr_writer :comments
 
   def initialize(attributes = {})
     attributes.each do |name, value|
       send("#{name}=", value)
     end
+  end
+
+  def comments
+    # lazy load comments if needed
+    cable.load_comments if !@comments
+    @comments
   end
 
   def update(params)

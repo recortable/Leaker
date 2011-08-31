@@ -1,17 +1,21 @@
 # encoding: utf-8
 
 class Cable < ActiveRecord::Base
-  attr_reader :translated_body, :translated_subject
+  after_create :create_translation
 
   belongs_to :user
   has_one :translation, dependent: :destroy
+  #has_many :comments, foreign_key: :identifier
 
+  attr_accessor :translated_body, :translated_subject
   validates :subject, presence: true
   validates :body, presence: true
   validates :translated_subject, presence:  true
   validates :translated_body, presence: true
 
-  after_create :create_translation
+  def comments
+    @comments ||= Comment.where(identifier: self.identifier)
+  end
 
   def self.get(identifier)
     Cable.find_by_identifier(identifier)
@@ -21,32 +25,13 @@ class Cable < ActiveRecord::Base
     Cable.find_by_identifier!(identifier)
   end
 
-  def translated_body=(body)
-    @translated_body = body
-  end
-
-  def translated_subject=(subject)
-    @translated_subject = subject
-  end
-
+  # Use 'identifier' as id in the url
   def to_param
     identifier
   end
 
   def paragraphs
-    return @paragraphs if @paragraphs
-    @paragraphs = []
-    original = body.split('¶')
-    translated = translation.body.split('¶')
-    combined = original.zip(translated)
-    id = 0
-    combined.each do |o, t|
-      @paragraphs << Paragraph.new(id: id,
-        cable: self, translation: translation,
-        original: o, translated: t)
-      id += 1
-    end
-    @paragraphs
+    @paragraphs ||= build_paragraphs
   end
 
   def paragraph(id)
@@ -60,7 +45,32 @@ class Cable < ActiveRecord::Base
     Activity.create(defaults.update(params))
   end
 
+  # lazy load comments: not always needed
+  def load_comments
+    paragraphs.each {|p| p.comments = []}
+    comments = self.comments
+    comments.each do |c|
+      p = paragraph(c.paragraph_id)
+      p.comments << c
+    end
+  end
+
   protected
+  def build_paragraphs
+    paragraphs = []
+    original = body.split('¶')
+    translated = translation.body.split('¶')
+    combined = original.zip(translated)
+    id = 0
+    combined.each do |o, t|
+      paragraphs << Paragraph.new(id: id,
+        cable: self, translation: translation,
+        original: o, translated: t)
+      id += 1
+    end
+    paragraphs
+  end
+
   def create_translation
     if translated_subject.present? and translated_body.present?
       Translation.create(cable: self, subject: translated_subject,

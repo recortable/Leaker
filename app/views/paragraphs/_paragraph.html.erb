@@ -5,13 +5,14 @@
   <div class="translated span6 columns">
     <%= paragraph.translated %>
   </div>
-  <div class="comments span1 columns">
-    &nbsp;
+  <div class="comments span4 columns">
+    <%= render paragraph.comments %>&nbsp;
   </div>
 </div>
 <div class="bottom actions">Párrafo:
 <%= link_to 'mejorar traducción',
   edit_cable_paragraph_path(paragraph.cable, paragraph.id) %> /
-<%= link_to 'comentar' %>
+<%= link_to 'comentar',
+  new_cable_comment_path(paragraph.cable, paragraph: paragraph.id) %>
 </div>
 

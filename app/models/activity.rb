@@ -5,12 +5,10 @@ class Activity < ActiveRecord::Base
 
   default_scope order: 'id DESC'
 
+  belongs_to :user
+
   def cable
     @cable ||= Cable.get! self.identifier
-  end
-
-  def user
-    @user ||= User.find user_id if user_id.present?
   end
 end
 

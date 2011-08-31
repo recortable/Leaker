@@ -10,12 +10,14 @@
 <div class="topbar">
       <div class="fill">
         <div class="container">
-          <h3><a href="/">Leaker</a></h3>
+          <h3><%= link_to 'Leaker backend', backend_root_path %></h3>
           <ul>
             <li><%= link_to 'Activity', backend_activities_path %></li>
             <li><%= link_to 'Cables', backend_cables_path %></li>
             <li><%= link_to 'Translations', backend_translations_path %></li>
             <li><%= link_to 'Users', backend_users_path %></li>
+            <li><%= link_to 'Comments', backend_comments_path %></li>
+            <li><%= link_to 'Leaker', root_path %>
           </ul>
         </div>
       </div> <!-- /fill -->

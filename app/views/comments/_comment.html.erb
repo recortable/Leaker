@@ -1,0 +1,6 @@
+<%= div_for comment do %>
+<%= comment.created_at %>
+<%= comment.user ? comment.user.name : 'Alguien' %>:
+<%= comment.body %>
+<% end %>
+
