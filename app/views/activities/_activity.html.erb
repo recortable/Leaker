@@ -1,2 +1,9 @@
-<%= activity.model_title %>
+<%= div_for activity do %>
+<%= activity.created_at %>
+<%= activity.user ? activity.user.name : 'Alguien' %>
+<%= 'ha traducido' if activity.model_class == 'Paragraph' %>
+<%= 'ha resumido' if activity.model_class == 'Summary' %>
+<%= link_to activity.cable.identifier,
+  activity.cable %>
+<% end %>
 

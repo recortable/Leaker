@@ -12,12 +12,17 @@
         <div class="container">
           <h3><a href="/">Leaker</a></h3>
           <ul>
+            <li><%= link_to 'Activity', backend_activities_path %></li>
             <li><%= link_to 'Cables', backend_cables_path %></li>
-            <li><%= link_to 'Traducciones', backend_translations_path %></li>
-            <li><%= link_to 'Participantes', backend_users_path %></li>
+            <li><%= link_to 'Translations', backend_translations_path %></li>
+            <li><%= link_to 'Users', backend_users_path %></li>
           </ul>
         </div>
       </div> <!-- /fill -->
+<ul class="nav secondary-menu">
+  <li><%= current_user.name %></li>
+</ul>
+
     </div>
 <div class="container">
 <div class="page">

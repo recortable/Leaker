@@ -1,16 +1,16 @@
 class Activity < ActiveRecord::Base
   validates :model_class, presence: true
-  validates :model_id, presence: true
-  validates :model_title, presence: true
+  validates :identifier, presence: true
   validates :action, presence: true
 
-  def self.store
-    Thread.current[:activity] ||= {}
+  default_scope order: 'id DESC'
+
+  def cable
+    @cable ||= Cable.get! self.identifier
   end
 
-  def self.current_user=(user_id)
-    Activity.store[:user_id] = user_id
+  def user
+    @user ||= User.find user_id if user_id.present?
   end
-
 end
 

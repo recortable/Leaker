@@ -11,13 +11,16 @@ Leaker::Application.routes.draw do
   end
 
   namespace :backend do
-    root to: 'cables#index'
+    root to: 'activities#index'
+    resources :activities
     resources :cables
     resources :users
     resources :translations
   end
 
   match "/auth/:provider/callback" => "sessions#create"
-  match "/signout" => "sessions#destroy", :as => :signout
+  match "/logout" => "sessions#destroy", :as => :logout
+  match "/entrar" => "sessions#new", :as => :login
+  match "/enter/:id" => "sessions#enter" if Rails.env.development?
 end
 

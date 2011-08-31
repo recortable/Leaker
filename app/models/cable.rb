@@ -54,9 +54,9 @@ class Cable < ActiveRecord::Base
     id < paragraphs.size ? paragraphs[id] : nil
   end
 
-  def build_activity(params)
-    defaults = {model_class: 'Cable', model_id: self.id,
-      model_title: translation.subject, action: 'update'}
+  def audit(model_class, params = {})
+    defaults = {model_class: model_class, action: 'update',
+      identifier: self.identifier, user_id: Thread.current[:user_id]}
     Activity.create(defaults.update(params))
   end
 

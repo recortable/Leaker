@@ -17,11 +17,36 @@
           <form action="/buscar">
             <input type="text" name="term" id="term" placeholder="Buscar wikileaks...">
           </form>
+
+<ul class="nav secondary-menu">
+<% if current_user %>
+  <li class="menu">
+    <%= current_user.name %>
+    <ul class="menu-dropdown">
+      <li><%= link_to 'Perfil' %></li>
+      <li><%= link_to 'Salir' %></li>
+    </ul>
+  </li>
+<% else %>
+  <li><a href="#">Entrar</a></li>
+<% end %>
+</ul>
         </div>
       </div> <!-- /fill -->
     </div>
 <div class="container">
+
+
 <div class="page">
+<div id="flashes">
+  <% flash.each do |name, msg| %>
+      <%= content_tag :div, :class => "flash alert-message #{name}" do %>
+        <a class="close" href="#">×</a>
+        <%= content_tag :p, msg %>
+      <% end %>
+  <% end %>
+</div>
+
 <%= yield %>
 </div>
 </div>

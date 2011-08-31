@@ -3,7 +3,7 @@ class CablesController < ApplicationController
 
   def index
     @last_cables = Cable.all
-    @last_activity = Activity.all
+    @last_activities = Activity.all
   end
 
   def search

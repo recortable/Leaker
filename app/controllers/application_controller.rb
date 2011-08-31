@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  helper_method :current_user
 
   before_filter do
     Thread.current[:user_id] = session[:user_id]
@@ -17,8 +18,8 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       store_location
-      flash[:notice] = 'Es necesario que te identifiques primero.'
-      redirect_to login_path
+      flash[:error] = 'Es necesario que te identifiques primero.'
+      redirect_to root_path
     end
   end
 

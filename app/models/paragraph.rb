@@ -22,10 +22,12 @@ class Paragraph
     self.translated = params[:translated]
     array = cable.paragraphs.collect {|p| p.translated}
     new_body = array.join(SEPARATOR)
-    cable.translation.update_attribute(:body, new_body)
 
-    cable.build_activity(model_position: id,
-      action: 'update_paragraph', backup: before_body)
+    Cable.transaction do
+      cable.translation.update_attribute(:body, new_body)
+      cable.audit('Paragraph',
+        {model_id: self.id, backup: before_body})
+    end
   end
 
   def persisted?

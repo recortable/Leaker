@@ -8,7 +8,7 @@ class SummariesController < ApplicationController
 
   def update
     @translation = Translation.find params[:translation_id]
-    @translation.update_attribute(:summary, params[:translation][:summary])
+    @translation.update_summary(params[:translation][:summary])
     respond_with @translation, :location => @translation.cable
   end
 end
