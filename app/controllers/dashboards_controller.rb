@@ -4,8 +4,9 @@ class DashboardsController < ApplicationController
   end
 
   def show
-    @last_cables = Cable.all
-    @last_activities = Activity.all
+    @cables_count = Cable.count
+    @last_cables = Cable.limit(10)
+    @last_activities = Activity.limit(10)
   end
 end
 

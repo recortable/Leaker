@@ -12,6 +12,7 @@ Leaker::Application.routes.draw do
   resources :translations do
     resource :summary
   end
+  resources :users
 
   namespace :backend do
     root to: 'activities#index'

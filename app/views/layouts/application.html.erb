@@ -23,16 +23,20 @@
 <% else %>
   <div id="session"><%= render 'sessions/session' %></div>
 <% end %>
-        </div>
-      </div> <!-- /fill -->
     </div>
+  </div>
+</div> <!-- /topbar -->
+
+<div id="viewport">
+
 <div class="container">
 
 
 <div class="page">
 <div id="flashes">
   <% flash.each do |name, msg| %>
-      <%= content_tag :div, :class => "flash alert-message #{name}" do %>
+      <% clazz = name == :notice ? 'success' : name %>
+      <%= content_tag :div, :class => "flash alert-message #{clazz}" do %>
         <a class="close" href="#">×</a>
         <%= content_tag :p, msg %>
       <% end %>
@@ -49,6 +53,7 @@ Puedes colaborar en:
 <a href="https://github.com/recortable/Leaker">
 https://github.com/recortable/Leaker</a>
 </div></div>
+</div> <!-- /viewport -->
 </body>
 </html>
 

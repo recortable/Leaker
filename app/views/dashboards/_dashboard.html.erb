@@ -1,17 +1,20 @@
-<div id="last_cables" class="span10 columns">
-<h4>Últimos cables traducidos</h4>
-<table>
-<tbody>
-<% @last_cables.each do |cable| %>
-<tr>
-<td><%= link_to cable.identifier, cable %></td>
-<td><%= cable.subject %></td>
-</tr>
+<div id="last_cables" class="span12 columns">
+  <h4>Últimos cables traducidos</h4>
+  <table>
+    <tbody>
+    <% @last_cables.each do |cable| %>
+    <tr>
+    <td><%= link_to cable.identifier, cable %></td>
+    <td><%= cable.subject %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% if @cables_count > @last_cables.size %>
+<%= link_to 'Ver todos', cables_path %>
 <% end %>
-</tbody>
-</table>
 </div>
-<div id="last_activity" class="span6 columns">
+<div id="last_activity" class="span4 columns">
 <h4>Actividad reciente</h4>
 <table>
 <tbody>

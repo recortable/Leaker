@@ -8,6 +8,7 @@ html: {class: 'form-stacked'}  do |form| %>
 <div class="row"><div class="span12 columns">
 <%= form.input :translated, :as => :text %>
 </div></div>
+<%= simple_anti_spam %>
 <div class="actions">
 <%= form.submit 'Guardar', class: 'btn' %>
 <%= link_to 'Cancelar', @cable %>

@@ -1,6 +1,7 @@
 <%= div_for activity do %>
-<%= activity.created_at %>
-<%= activity.user ? activity.user.name : 'Alguien' %>
+Hace <%= time_ago_in_words activity.created_at %>
+<strong><%= activity.user ? link_to(activity.user.name, activity.user) : 'Alguien' %></strong>
+<br/>
 <%= 'ha traducido' if activity.model_class == 'Paragraph' %>
 <%= 'ha resumido' if activity.model_class == 'Summary' %>
 <%= 'ha comentado' if activity.model_class == 'Comment' %>

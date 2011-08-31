@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.user = current_user
-    @comment.save
+    @comment.save unless spam?
     respond_with @comment, :location => @comment.cable
   end
 

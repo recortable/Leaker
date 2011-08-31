@@ -177,7 +177,7 @@
       #       attributes:
       #         login:
       #           blank: "This is a custom blank message for User login"
-      # Will define custom blank validation message for User model and 
+      # Will define custom blank validation message for User model and
       # custom blank validation message for login attribute of User model.
       #models:
 
@@ -252,7 +252,7 @@
 
   time:
     formats:
-      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      default: "%d/%m/%Y"
       short: "%d de %b %H:%M"
       long: "%d de %B de %Y %H:%M"
     am: "am"
@@ -286,3 +286,4 @@
     shelves:
       index:
         latest_books: "ÚLTIMAS ADQUISICIONES"
+

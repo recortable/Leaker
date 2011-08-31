@@ -9,6 +9,7 @@ group :development do
   gem 'sqlite3'
 end
 
+# Required for Heroku deployment
 group :production do
   gem 'pg'
 end
@@ -24,16 +25,18 @@ end
 
 gem 'jquery-rails'
 
-gem 'rails-backbone'
-gem 'omniauth'
-gem 'inherited_resources'
-gem 'kaminari'
-gem 'has_scope'
-gem 'responders'
-gem 'simple_form'
-gem 'acts-as-taggable-on', '~>2.1.0'
-#gem 'paper_trail'
-gem 'redcarpet'
+
+# Recommended reading: http://iain.nl/backends-in-rails-3-1
+gem 'rails-backbone' # Backbone client - currently not used
+gem 'omniauth' # Twitter authentication
+gem 'inherited_resources' # Backend controllers
+gem 'kaminari' # Pagination
+gem 'has_scope' # Pagination (with kaminari)
+gem 'responders' # Flash and http cache responders
+gem 'simple_form' # Easy forms
+gem 'acts-as-taggable-on', '~>2.1.0' # Tags
+gem 'redcarpet' # Markup for comments
+
 #gem 'sishen-rtranslate'
 
 

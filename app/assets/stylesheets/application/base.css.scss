@@ -1,4 +1,11 @@
 
+div#viewport {
+  position: fixed;
+  left:0;right:0;bottom:0;
+  top: 42px;
+  overflow: auto;
+}
+
 div.topbar #session {float: right;}
 
 div.page {
@@ -29,4 +36,6 @@ border-radius: 0 0 3px 3px;
 
 #footer {margin-top: 40px; padding: 5px 0; text-align:center;
 border-top: 1px solid #ddd;}
+
+form #email {display: none;}
 

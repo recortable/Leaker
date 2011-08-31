@@ -14,12 +14,12 @@ some client code is written using coffeescript) and, obiously,
 ruby skills.
 
 Look at routes.rb is a recommended place to start. Take a look also
-to the schema.rb.
+to the schema.rb (and the models). Don't miss the gems used (little bit commented at Gemfile file)
 
 For the css the excelent bootstrap library from twitter is used:
 http://twitter.github.com/bootstrap
 
-Unfortunately no documentation or tests are done (yet).
+Unfortunately there's only little documentation, and no tests are done (yet).
 
 ### Application structure
 

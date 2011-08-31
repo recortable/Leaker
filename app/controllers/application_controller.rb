@@ -1,7 +1,10 @@
+# Application controller
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
   helper_method :session_by_ajax
+
+  self.responder = Responder
 
   # Set the user_id available to models (in a thread safe way)
   # Used to audit changes (see cable.audit)
@@ -18,16 +21,18 @@ class ApplicationController < ActionController::Base
     @session_by_ajax ? @session_by_ajax : false
   end
 
-
+  # Retrieve the current session user, if any
   def current_user
     @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
   end
 
+  # Store the current user in the session
   def current_user=(user)
     @current_user = user
     session[:user_id] = user.id
   end
 
+  # To be used as before_filter
   def require_user
     unless current_user
       store_location
@@ -36,15 +41,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def store_location(location = nil)
-    location ||= request.fullpath
-    session[:return_to] = location
+  # Simple anti-spam method: check if some fake required
+  # form parameter is present (the form field is hidden by css)
+  def spam?
+    params[:email].present?
   end
 
-  def stored_or(default_path)
-    path = session[:return_to] || default_path
-    session[:return_to] = nil
-    path
-  end
 end
 
