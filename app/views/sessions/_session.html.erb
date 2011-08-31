@@ -1,0 +1,14 @@
+<ul class="nav secondary-menu">
+<% if current_user %>
+  <li class="menu">
+    <%= link_to current_user.name %>
+    <ul class="menu-dropdown">
+      <li><%= link_to 'Perfil' %></li>
+      <li><%= link_to 'Salir' %></li>
+    </ul>
+  </li>
+<% else %>
+  <li><a href="#">Entrar</a></li>
+<% end %>
+</ul>
+

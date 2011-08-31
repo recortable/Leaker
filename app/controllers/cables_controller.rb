@@ -6,6 +6,7 @@ class CablesController < ApplicationController
 
   def search
     @term = params[:term]
+    @session_by_ajax = true
   end
 
   def show

@@ -26,5 +26,6 @@ Leaker::Application.routes.draw do
   match "/logout" => "sessions#destroy", :as => :logout
   match "/entrar" => "sessions#new", :as => :login
   match "/enter/:id" => "sessions#enter" if Rails.env.development?
+  match "/session" => "sessions#show"
 end
 

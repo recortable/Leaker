@@ -18,19 +18,11 @@
             <input type="text" name="term" id="term" placeholder="Buscar wikileaks...">
           </form>
 
-<ul class="nav secondary-menu">
-<% if current_user %>
-  <li class="menu">
-    <%= current_user.name %>
-    <ul class="menu-dropdown">
-      <li><%= link_to 'Perfil' %></li>
-      <li><%= link_to 'Salir' %></li>
-    </ul>
-  </li>
+<% if session_by_ajax %>
+<div id="session" class="ajax">Cargando...</div>
 <% else %>
-  <li><a href="#">Entrar</a></li>
+  <div id="session"><%= render 'sessions/session' %></div>
 <% end %>
-</ul>
         </div>
       </div> <!-- /fill -->
     </div>

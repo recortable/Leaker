@@ -37,17 +37,20 @@ fillCable = ->
 
   req.fail -> $("#apiError").show()
 
+searchCables = ->
+  term = $('#searchTerm').text()
+  url = "#{API}/cables/find.json?query=#{term}&callback=?"
+  req = $.getJSON(url)
+  req.success (results) ->
+    template = $('#cables-tmpl').html()
+    $("#searchResults").html(tmpl(template, results))
+  req.fail ->
+    # Why this not work?
+    $("#apiError").show()
+
 
 $ ->
-  if $('#searchTerm')[0]
-    term = $('#searchTerm').text()
-    url = "#{API}/cables/find.json?query=#{term}&callback=?"
-    req = $.getJSON(url)
-    template = $('#cables-tmpl').html()
-    req.success (results) ->
-      console.log results.cables
-      $("#searchResults").html(tmpl(template, results))
-
+  searchCables() if $('#searchTerm')[0]
   fillForm() if $("#newCableIdentifier")[0]
   fillCable() if $("#cableIdentifier")[0]
 
