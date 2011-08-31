@@ -1,8 +1,10 @@
 Leaker::Application.routes.draw do
-  root to: 'cables#index'
+  root to: 'dashboards#index'
 
   match "/buscar/:term" => "cables#search"
   match "/buscar" => "cables#search"
+
+  resource :dashboard
   resources :cables do
       resources :paragraphs
       resources :comments

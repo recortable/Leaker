@@ -2,8 +2,6 @@ class CablesController < ApplicationController
   respond_to :html
 
   def index
-    @last_cables = Cable.all
-    @last_activities = Activity.all
   end
 
   def search
