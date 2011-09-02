@@ -7,6 +7,14 @@ class Translation < ActiveRecord::Base
   validates :body, :presence => true
   validates :lang, :presence => true
 
+  def update_info(params)
+    backup = "#SUBJECT:\n#{subject}\n#SUMMARY:\n#{summary}\n#ACCURACY:\n#{accuracy}"
+    Cable.transaction do
+      update_attributes(params)
+      cable.audit('Translation', {backup: backup})
+    end
+  end
+
   def update_summary(summary)
     original_summary = self.summary
     Cable.transaction do
@@ -15,5 +23,6 @@ class Translation < ActiveRecord::Base
         {backup: original_summary})
     end
   end
+
 end
 

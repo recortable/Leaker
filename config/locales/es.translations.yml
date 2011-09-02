@@ -1,0 +1,15 @@
+es:
+  flash:
+    translations:
+      update:
+        notice: 'Información de la traducción actualizada. Grrrracias!'
+
+  simple_form:
+    labels:
+      translation:
+        subject: 'Título'
+        summary: 'Resúmen'
+    hints:
+      translation:
+        summary: 'Tienes 300 caracteres'
+

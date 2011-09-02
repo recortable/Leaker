@@ -35,7 +35,6 @@ class ApplicationController < ActionController::Base
   # To be used as before_filter
   def require_user
     unless current_user
-      store_location
       flash[:error] = 'Es necesario que te identifiques primero.'
       redirect_to root_path
     end

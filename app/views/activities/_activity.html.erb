@@ -6,6 +6,7 @@ Hace <%= time_ago_in_words activity.created_at %>
 <%= 'ha resumido' if activity.model_class == 'Summary' %>
 <%= 'ha comentado' if activity.model_class == 'Comment' %>
 <%= 'ha añadido el cable' if activity.model_class == 'Cable' %>
+<%= 'ha actualizado' if activity.model_class == 'Translation' %>
 <%= link_to activity.cable.identifier,
   activity.cable %>
 <% end %>

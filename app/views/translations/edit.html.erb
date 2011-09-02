@@ -1,0 +1,15 @@
+<%= title @cable.identifier, :div %>
+<h6><%= @cable.subject %></h6>
+
+<%= title 'Editar traducción' %>
+
+<%= simple_form_for @translation,
+html: {class: 'form-stacked'}  do |form| %>
+<%= form.input :subject %>
+<%= form.input :summary, as: :text %>
+<div class="actions">
+<%= form.submit 'Guardar', class: 'btn' %>
+<%= link_to 'Cancelar', @cable %>
+</div>
+<% end %>
+

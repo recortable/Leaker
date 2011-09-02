@@ -1,9 +1,15 @@
 class TranslationsController < ApplicationController
-  respond_to :json
+  respond_to :html
 
-  def show
-    c = Cable.find_by_reference! :id
-    respond_with c.translation
+  def edit
+    @translation = Translation.find params[:id]
+    @cable = @translation.cable
+  end
+
+  def update
+    @translation = Translation.find params[:id]
+    @translation.update_info params[:translation]
+    respond_with @translation, :location => @translation.cable
   end
 end
 

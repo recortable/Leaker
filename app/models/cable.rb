@@ -4,6 +4,9 @@ class Cable < ActiveRecord::Base
   after_create :create_translation
   after_create :audit_creation
 
+  default_scope order: 'id DESC'
+
+
   belongs_to :user
   has_one :translation, dependent: :destroy
   #has_many :comments, foreign_key: :identifier
