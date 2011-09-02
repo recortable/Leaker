@@ -2,6 +2,7 @@
 
 class Cable < ActiveRecord::Base
   after_create :create_translation
+  after_create :audit_creation
 
   belongs_to :user
   has_one :translation, dependent: :destroy
@@ -56,6 +57,10 @@ class Cable < ActiveRecord::Base
   end
 
   protected
+  def audit_creation
+    audit('Cable', {action: 'create'})
+  end
+
   def build_paragraphs
     paragraphs = []
     original = body.split('¶')
