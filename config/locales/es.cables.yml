@@ -1,0 +1,18 @@
+
+es:
+  flash:
+    cables:
+      create:
+        alert: 'Debes completar los campos obligatorios'
+
+  simple_form:
+    labels:
+      cable:
+        subject: 'Título original'
+        body: 'Texto original'
+        translated_subject: 'Título traducido'
+        translated_body: 'Texto traducido'
+    hints:
+      cable:
+        translated_body: 'Recuerda mantener los saltos de párrafo ¶ exactamente en el mismo sitio que el original.'
+

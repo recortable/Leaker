@@ -36,6 +36,7 @@
 <div id="flashes">
   <% flash.each do |name, msg| %>
       <% clazz = name == :notice ? 'success' : name %>
+      <% clazz = 'error' if name == :alert %>
       <%= content_tag :div, :class => "flash alert-message #{clazz}" do %>
         <a class="close" href="#">×</a>
         <%= content_tag :p, msg %>
