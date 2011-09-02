@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
   def index
     @session_by_ajax = true
+    response.headers['Cache-Control'] = 'public, max-age=30000'
   end
 
   def show

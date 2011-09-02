@@ -1,6 +1,19 @@
 
 <div id="newCableIdentifier"><%= @cable.identifier %></div>
 <h1>Traducir cable</h1>
+<div class="alert-message block-message warning">
+	<p>Te recomendamos que hagas una primera traducción rápida
+utilizando una herramienta de traducción (por ejemplo:
+<a href="http://translate.google.com">http://translate.google.com</a>).
+Una vez guardada se pueden ir traduciendo poco a poco los párrafos
+más importantes.
+</p>
+</div>
+<div class="alert-message block-message important">
+	<p>Es fundamental que la traducción mantenga los saltos
+de párrafo ¶ exactamente en el mismo sitio que el original.</p>
+</div>
+
 <div id="output">
 <%= simple_form_for @cable, html: {class: 'form-stacked'} do |form| %>
 <%= form.hidden_field :identifier %>
