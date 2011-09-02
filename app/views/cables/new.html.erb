@@ -1,7 +1,7 @@
 
 <div id="newCableIdentifier"><%= @cable.identifier %></div>
 <h1>Traducir cable</h1>
-<div class="alert-message block-message warning">
+<div id="translateRecommendation" class="alert-message block-message warning">
 	<p>Te recomendamos que hagas una primera traducción rápida
 utilizando una herramienta de traducción (por ejemplo:
 <a href="http://translate.google.com">http://translate.google.com</a>).
@@ -9,6 +9,14 @@ Una vez guardada se pueden ir traduciendo poco a poco los párrafos
 más importantes.
 </p>
 </div>
+
+<div id="translatedByAjax" style="display: none" class="alert-message block-message info">
+	<p>Se te ha propuesto una traducción automática utilizando el
+traductor de google. Revisa (especialmente el título) y después de guardar puedes revisar los párrafos individualmente.
+</p>
+</div>
+
+
 <div class="alert-message block-message info">
 	<p>Es fundamental que la traducción mantenga los saltos
 de párrafo ¶ exactamente en el mismo sitio que el original.</p>

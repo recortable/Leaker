@@ -18,5 +18,12 @@ module ApplicationHelper
     text_field_tag :email, '', class: 'required'
   end
 
+  API_KEY = Rails.env.production? ?     'ABQIAAAAzNQvo6bhs07agv4Lq5na1xQCVFDRa3UNbFYKDD1mLfRZK60JjxRwvZ_ffQ9NeF5blLQjutKkCRZf6Q' :
+'ABQIAAAAzNQvo6bhs07agv4Lq5na1xTJQa0g3IQ9GZqIMmInSLzwtGDKaBQ0XV8_AqXnXErXoX2A9VjkKASlxA'
+
+  def api_key
+    API_KEY
+  end
+
 end
 
